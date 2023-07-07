@@ -1,88 +1,95 @@
 #include "UserDrive.h"
 
-UserDrive::UserDrive(Hardware* hardware): Drive(hardware) 
-{}
-
-int UserDrive::getFlywheelSpeed()
+UserDrive::UserDrive(Hardware *hardware) : Drive(hardware)
 {
-    return flywheelVoltage;
+}
+
+int UserDrive::get_flywheel_speed()
+{
+    return flywheel_voltage;
 }
 
 void UserDrive::drive()
 {
-    driveTrainControls();
-    intakeControls();
-    flywheelControls();
-    flickDiskControls();
-    expandControls();
+    drive_train_controls();
+    intake_controls();
+    flywheel_controls();
+    flick_disk_controls();
 }
 
-void UserDrive::driveTrainControls(){
+void UserDrive::drive_train_controls()
+{
     const int DEADZONE = 2;
 
-    double forwardBackward = (double) hw->controller.Axis3.position(vex::percentUnits::pct);
-    double turning = (double) hw->controller.Axis1.position(vex::percentUnits::pct);
+    double forward_backward = (double)hw->controller.Axis3.position(vex::percentUnits::pct);
+    double turning = (double)hw->controller.Axis1.position(vex::percentUnits::pct);
 
-    if(std::abs(forwardBackward) < DEADZONE){
-        forwardBackward = 0;
+    if (std::abs(forward_backward) < DEADZONE)
+    {
+        forward_backward = 0;
     }
 
-
-    if(std::abs(turning) < DEADZONE) {
+    if (std::abs(turning) < DEADZONE)
+    {
         turning = 0;
     }
 
-    moveDriveTrain({forwardBackward, turning});
+    move_drive_train({forward_backward, turning});
 }
 
-void UserDrive::intakeControls(){
-    if(hw->controller.ButtonL1.pressing()){
-        spinIntake(false, false);
-    }else if(hw->controller.ButtonX.pressing()){
-        spinIntake(false, true);
-    }else{
-        spinIntake(true, true);
+void UserDrive::intake_controls()
+{
+    if (hw->controller.ButtonL1.pressing())
+    {
+        spin_intake(false, false);
+    }
+    else if (hw->controller.ButtonX.pressing())
+    {
+        spin_intake(false, true);
+    }
+    else
+    {
+        spin_intake(true, true);
     }
 }
 
+void UserDrive::flywheel_controls()
+{
 
-
-
-void UserDrive::flywheelControls(){
-
-    if(hw->controller.ButtonB.pressing()){
-        flywheelVoltage = 12;
+    if (hw->controller.ButtonB.pressing())
+    {
+        flywheel_voltage = 12;
         hw->controller.Screen.clearScreen();
-        hw->controller.Screen.setCursor(3,1);
-        hw->controller.Screen.print("Flywheel Volt: %.1lf", flywheelVoltage);
+        hw->controller.Screen.setCursor(3, 1);
+        hw->controller.Screen.print("Flywheel Volt: %.1lf", flywheel_voltage);
         vex::wait(100, vex::msec);
     }
 
-    if(hw->controller.ButtonR1.pressing()){
-        
-        spinFlywheel(flywheelVoltage);
-       //Rumble controller if flywheel is up to speed every 2 seconds
-       if ((hw->flywheelBottom.velocity(vex::velocityUnits::pct)+hw->flywheelTop.velocity(vex::velocityUnits::pct))/2.0 >= flywheelVoltage/ 12.0 * 100
-            && (hw->brain.timer(vex::msec) - initRumbleTime) >= 1000) 
+    if (hw->controller.ButtonR1.pressing())
+    {
+
+        spin_flywheel(flywheel_voltage);
+        // Rumble controller if flywheel is up to speed every 2 seconds
+        if ((hw->flywheel_bottom.velocity(vex::velocityUnits::pct) + hw->flywheel_top.velocity(vex::velocityUnits::pct)) / 2.0 >= flywheel_voltage / 12.0 * 100 && (hw->brain.timer(vex::msec) - init_rumble_time) >= 1000)
         {
             hw->controller.rumble(".  ");
-            initRumbleTime = hw->brain.timer(vex::msec);
+            init_rumble_time = hw->brain.timer(vex::msec);
         }
-    }else if(hw->controller.ButtonY.pressing()){
-        spinFlywheel(-flywheelVoltage);
-    }else{
-        spinFlywheel(0);
+    }
+    else if (hw->controller.ButtonY.pressing())
+    {
+        spin_flywheel(-flywheel_voltage);
+    }
+    else
+    {
+        spin_flywheel(0);
     }
 }
 
-void UserDrive::flickDiskControls(){
-    if(hw->controller.ButtonR2.pressing()){
-        flickDisk();
-    }
-}
-
-void UserDrive::expandControls(){
-    if(hw->controller.ButtonA.pressing()){
-        expand();
+void UserDrive::flick_disk_controls()
+{
+    if (hw->controller.ButtonR2.pressing())
+    {
+        flick_disk();
     }
 }

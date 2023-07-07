@@ -1,36 +1,27 @@
 #include "Drive.h"
 
-class UserDrive : public Drive{
+class UserDrive : public Drive
+{
 public:
-    UserDrive(Hardware* hardware);
-    int getFlywheelSpeed();
+    UserDrive(Hardware *hardware);
+    int get_flywheel_speed();
     void drive();
 
 private:
-    
-
-    //double flywheelVoltage = rc->lowFlywheelVoltUserDrive; //Sid
-    double flywheelVoltage = 12; //Granny
-    double initRumbleTime = 0;
-
-
+    // double flywheel_voltage = rc->lowFlywheelVoltUserDrive; //Sid
+    double flywheel_voltage = 12; // Granny
+    double init_rumble_time = 0;
 
     /// @brief  Controls drivetrain based on controller joysticks. Up/down on the left joystick is forward/backward.
     //          Left/right on the right joystick is turning.
-    void driveTrainControls();
+    void drive_train_controls();
 
-    /// @brief  Runs intake  while thee L1 conroller bumper is held and reverse intake  while the X button is held.
-    void intakeControls();
+    /// @brief  Runs intake  while thee L1 controller bumper is held and reverse intake  while the X button is held.
+    void intake_controls();
 
     /// @brief  Spins up flywheel while R1 controller bumper is held.
-    void flywheelControls();
+    void flywheel_controls();
 
     /// @brief  Flicks disk once when the R2 controller bumper is pressed. Flicks multiple times if held.
-    void flickDiskControls();
-
-    /// @brief  Lauches the expansion when the A buutton is pressed.
-    void expandControls();
-
-    void flyweelControlswPID();
-
+    void flick_disk_controls();
 };
