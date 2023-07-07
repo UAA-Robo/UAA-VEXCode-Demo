@@ -12,15 +12,15 @@ void Drive::move_drive_train(std::pair<double, double> velPercent)
     hw->right_wheels.spin(vex::directionType::fwd, vel.second, vex::velocityUnits::pct);
 }
 
-void Drive ::spin_intake(bool ISSTOP, bool ISINVERT, int volts)
+void Drive ::spin_intake(bool IS_STOP, bool IS_INVERT, int volts)
 {
-    if (ISSTOP)
+    if (IS_STOP)
     {
         hw->intake.stop();
     }
     else
     {
-        if (ISINVERT)
+        if (IS_INVERT)
         {
             hw->intake.spin(vex::directionType::rev, volts, vex::voltageUnits::volt);
         }

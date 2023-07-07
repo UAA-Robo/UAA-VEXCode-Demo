@@ -22,10 +22,10 @@ protected:
     ///                     will cause the drivetrain to move in a arc.
     void move_drive_train(std::pair<double, double> velPercent);
 
-    /// @brief  Spins the intake indefinitely unless ISSTOP is passed as true.
-    /// @param ISSTOP       If true, stops the intake.
-    /// @param ISINVERT     If true, runs the intake in reverse;
-    void spin_intake(bool ISSTOP = false, bool ISINVERT = false, int volts = 12);
+    /// @brief  Spins the intake indefinitely unless IS_STOP is passed as true.
+    /// @param IS_STOP       If true, stops the intake.
+    /// @param IS_INVERT     If true, runs the intake in reverse;
+    void spin_intake(bool IS_STOP = false, bool IS_INVERT = false, int volts = 12);
 
     /// @brief  Sets the voltage and spins the flywheel until the function is called again with a different voltage (like 0).
     /// @param voltage      Double from -12,000 to 12,000. Negative voltage reversed the flywheel.
