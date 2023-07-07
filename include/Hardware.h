@@ -22,11 +22,11 @@ public:
     vex::motor_group drivetrain = vex::motor_group(wheelFrontLeft, wheelBackLeft, wheelFrontRight, wheelBackRight);
 
     // Disk launcher (flywheel and flicker)
-    vex::motor flywheel_top = vex::motor(vex::PORT4, vex::ratio6_1, false);
-    vex::motor flywheel_bottom = vex::motor(vex::PORT5, vex::ratio6_1, true);
-    vex::motor_group flywheel = vex::motor_group(flywheel_top, flywheel_bottom);
+    vex::motor flywheelTop = vex::motor(vex::PORT4, vex::ratio6_1, false);
+    vex::motor flywheelBottom = vex::motor(vex::PORT5, vex::ratio6_1, true);
+    vex::motor_group flywheel = vex::motor_group(flywheelTop, flywheelBottom);
 
-    vex::motor disk_flicker = vex::motor(vex::PORT3, vex::ratio18_1, false);
+    vex::motor diskFlicker = vex::motor(vex::PORT3, vex::ratio18_1, false);
 
     // Intake motors
     vex::motor intakeBottom = vex::motor(vex::PORT6, vex::ratio6_1, false);
