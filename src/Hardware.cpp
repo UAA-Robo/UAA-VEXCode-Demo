@@ -14,8 +14,3 @@ Hardware::Hardware() {
     launcher.setStopping(vex::brakeType::brake);
     flywheel.setStopping(vex::brakeType::coast);
 }
-
-void Hardware::startupCheck()
-{
-    //vex::devices::numberOf
-}

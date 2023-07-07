@@ -1,7 +1,6 @@
 #pragma once
 #include "vex.h"
 #include "Hardware.h"
-#include "RobotConfig.h"
 
 class Drive{
 
@@ -20,10 +19,6 @@ protected:
 
     Hardware* hw;
 
-    double outPutVolt;
-    double Kp = 0.9;
-    double Ki = 0.3;
-    double Kd = 0.6;
     
 
     /// @brief      Calculates the velocity in RPMs that the left and right drivetrain wheels should recieve based on

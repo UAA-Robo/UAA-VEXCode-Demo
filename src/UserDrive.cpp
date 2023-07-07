@@ -10,7 +10,6 @@ int UserDrive::getFlywheelSpeed()
 
 void UserDrive::drive()
 {
-    //mirrorDriveToggle();
     driveTrainControls();
     intakeControls();
     flywheelControls();
@@ -59,7 +58,6 @@ void UserDrive::flywheelControls(){
         vex::wait(100, vex::msec);
     }
 
-    //flywheelVoltage = 7.4;
     if(hw->controller.ButtonR1.pressing()){
         
         spinFlywheel(flywheelVoltage);
@@ -87,8 +85,4 @@ void UserDrive::expandControls(){
     if(hw->controller.ButtonA.pressing()){
         expand();
     }
-}
-
-void UserDrive::mirrorDriveToggle(){
-    mirrorDrive = (hw->controller.ButtonL2.pressing()) ? -1 : 1;
 }
