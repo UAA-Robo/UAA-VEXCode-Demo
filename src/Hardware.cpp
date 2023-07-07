@@ -2,15 +2,15 @@
 
 Hardware::Hardware() {
 
-    wheelLeftFront.setBrake(vex::brakeType::brake);
-    wheelLeftBack.setBrake(vex::brakeType::brake);
-    wheelRightFront.setBrake(vex::brakeType::brake);
-    wheelRightBack.setBrake(vex::brakeType::brake);
+    wheel_front_left.setBrake(vex::brakeType::brake);
+    wheel_back_left.setBrake(vex::brakeType::brake);
+    wheel_front_right.setBrake(vex::brakeType::brake);
+    wheel_back_right.setBrake(vex::brakeType::brake);
 
-    leftWheels.setStopping(vex::brakeType::brake);
-    rightWheels.setStopping(vex::brakeType::brake);
+    left_wheels.setStopping(vex::brakeType::brake);
+    right_wheels.setStopping(vex::brakeType::brake);
 
-    driveTrain.setStopping(vex::brakeType::brake);
-    launcher.setStopping(vex::brakeType::brake);
+    drivetrain.setStopping(vex::brakeType::brake);
+    disk_flicker.setStopping(vex::brakeType::brake);
     flywheel.setStopping(vex::brakeType::coast);
 }

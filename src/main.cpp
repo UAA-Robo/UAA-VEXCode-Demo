@@ -18,7 +18,7 @@ void user_control(void) {
 
   while (true) {
     us->drive();
-    vex::wait(20, vex::msec);  // Sleep the task for a short amount of time to prevent wasted resources.
+    vex::wait(20, vex::msec);  // Sleep the task for a short amount of time to prevent wasted resources
   }
 }
 
@@ -26,7 +26,5 @@ void user_control(void) {
 int main() {
   user_control();
 
-  // Prevent main from exiting with an infinite loop.
-  while (true) wait(100, msec);
-  
+  while (true) wait(100, msec);  // Prevent main from exiting with an infinite loop
 }
